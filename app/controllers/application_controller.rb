@@ -1,0 +1,10 @@
+class ApplicationController < ActionController::Base
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :address, :dob, :salary, :department_code, :company_id, :joining, :email, :password, :password_confirmation])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :address, :dob, :salary, :department_code, :company_id, :joining, :email, :password, :password_confirmation, :current_password])
+  end
+end

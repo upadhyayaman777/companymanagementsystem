@@ -1,0 +1,21 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @company %>
+<h2>All the Department</h2>
+
+
+<!-- Display other company details -->
+
+<%= link_to "See Departments", (@company) %>
+
+<%= render @company.departments %>
+<div>
+  <%= link_to "Edit this company", edit_company_path(@company) %> |
+  <%= link_to "Back to companies", companies_path %>
+  
+  <br>
+  <br>
+  <%= button_to "Destroy this company", @company, method: :delete %>
+</div>
+
+

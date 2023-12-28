@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  dob: 2023-12-26
+  address: MyString
+  joining: 2023-12-26
+  salary: 9.99
+  company: one
+  department: one
+
+two:
+  name: MyString
+  dob: 2023-12-26
+  address: MyString
+  joining: 2023-12-26
+  salary: 9.99
+  company: two
+  department: two

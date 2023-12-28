@@ -1,0 +1,39 @@
+<div id="<%= dom_id department %>">
+  <p>
+    <strong>Department code:</strong>
+    <%= department.department_code %>
+  </p>
+
+  <p>
+    <strong>Name:</strong>
+    <%= department.name %>
+  </p>
+
+  <p>
+    <strong>Location:</strong>
+    <%= department.location %>
+  </p>
+
+  <p>
+    <strong>Company id:</strong>
+    <%= department.company_id %>
+  </p>
+
+</div>
+
+<p>-----------------------</p>
+
+<div class="position top-54 end- 86 p-1">
+  <% if employee_signed_in? %>
+    <div class="text-muted">
+      Logged in as <strong><%= current_employee.email %></strong> |
+      <%= link_to "Edit profile", edit_employee_registration_path, class: 'navbar-link' %> |
+      <%= link_to "Logout", destroy_employee_session_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'navbar-link' %>
+    </div>
+  <% else %>
+    <div class="text-muted">
+      Have already an account? <%= link_to "Login here", new_employee_session_path, class: 'fw-bold text-body' %>
+    </div>
+  <% end %>
+</div>
+

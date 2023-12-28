@@ -1,0 +1,82 @@
+<section class="vh-100 bg-image"
+  style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+              <!-- Replace the form_for block with a standard HTML form -->
+              <form action="<%= registration_path(resource_name) %>" method="post">
+
+                <!-- Include the CSRF token for security -->
+                <%= csrf_meta_tags %>
+
+                <!-- Display any error messages -->
+                <%= render "devise/shared/error_messages", resource: resource %>
+
+                <div class="form-outline mb-4">
+                  <input type="text" id="employee_name" name="employee[name]" class="form-control form-control-lg" />
+                  <label class="form-label" for="employee_name">Your Name</label>
+                </div>
+                 
+                <div class="form-outline mb-4">
+                  <input type="date" id="employee_dob" name="employee[dob]" class="form-control form-control-lg" />
+                  <label class="form-label" for="employee_dob">Date of birth</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="text" id="employee_company_id" name="employee[company_id]" class="form-control form-control-lg" />
+                  <label class="form-label" for="employee_company_id">Company ID</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="text" id="employee_department_code" name="employee[department_code]" class="form-control form-control-lg" />
+                  <label class="form-label" for="employee_departmenr_code">Department Code</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="email" id="employee_email" name="employee[email]" class="form-control form-control-lg" />
+                  <label class="form-label" for="employee_email">Your Email</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="password" id="employee_password" name="employee[password]" class="form-control form-control-lg" />
+                  <label class="form-label" for="employee_password">Password</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="password" id="employee_password_confirmation" name="employee[password_confirmation]" class="form-control form-control-lg" />
+                  <label class="form-label" for="employee_password_confirmation">Confirm Password</label>
+                </div>
+
+                
+                <!-- Repeat similar modifications for other form fields -->
+
+                <div class="d-flex justify-content-center">
+                  <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
+                    Register
+                  </button>
+                </div>
+
+                <% if employee_signed_in? %>
+                <div class="text-center text-muted mt-5 mb-0">
+                  Logged in as <strong><%= current_employee.email %></strong> <br>
+                  <%= link_to "Edit profile", edit_employee_registration_path, class: 'navbar-link' %>
+                  <%= link_to "Logout", destroy_employee_session_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'navbar-link' %>
+                </div>
+                <% else %>
+                  <div class="text-center text-muted mt-5 mb-0">
+                    Have already an account? <%= link_to "Login here", new_employee_session_path, class: 'fw-bold text-body' %>
+                  </div>
+                <% end %>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
