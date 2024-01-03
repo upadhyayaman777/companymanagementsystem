@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_26_111649) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_29_062127) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -58,8 +58,20 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_26_111649) do
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
   end
 
+  create_table "leafs", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.string "status"
+    t.text "reason"
+    t.bigint "employee_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_leafs_on_employee_id"
+  end
+
   add_foreign_key "departments", "companies"
   add_foreign_key "employees", "companies"
   add_foreign_key "employees", "departments", column: "department_code", primary_key: "department_code", on_delete: :cascade
   add_foreign_key "employees", "employees", column: "manager_id"
+  add_foreign_key "leafs", "employees"
 end

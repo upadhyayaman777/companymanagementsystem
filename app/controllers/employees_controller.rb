@@ -8,7 +8,9 @@ class EmployeesController < ApplicationController
   end
 
   def show
-    # @employee = Employee.find(params[:id])
+    @employee = Employee.find(params[:id])
+    @leaves_taken = @employee.leafs
+
   end
 
   # GET /employees/new
@@ -23,6 +25,8 @@ class EmployeesController < ApplicationController
   # POST /employees or /employees.json
   def create
     @employee = Employee.new(employee_params)
+    # @employee = @department.employees.new(employee_params)
+
 
     respond_to do |format|
       if @employee.save
@@ -64,6 +68,9 @@ class EmployeesController < ApplicationController
       @employee = Employee.find(params[:id])
     end
 
+    def set_department
+      @department = Department.find_by(id: params[:department_code])
+    end
     # Only allow a list of trusted parameters through.
     def employee_params
       params.require(:employee).permit(:name, :dob, :address, :joining, :salary, :email, :password,  :company_id, :department_code)

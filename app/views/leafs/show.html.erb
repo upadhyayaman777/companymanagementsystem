@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @leaf %>
+
+<div>
+  <%= link_to "Edit this leaf", edit_leaf_path(@leaf) %> |
+  <%= link_to "Back to leafs", leafs_path %>
+
+  <%= button_to "Destroy this leaf", @leaf, method: :delete %>
+</div>

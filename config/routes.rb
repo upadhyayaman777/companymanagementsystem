@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :leafs
 
 
   # root "employees#sign_up"
@@ -10,9 +11,14 @@ Rails.application.routes.draw do
   # root "devise/registrations#new"
   
   devise_for :employees
-  resources :employees
+  
+resources :employees do
+  resources :leafs #, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+end
+
   resources :departments  
   resources :companies
+  resources :leafs
   
   # resources :departments do
   #   devise_for :employees, path: employees

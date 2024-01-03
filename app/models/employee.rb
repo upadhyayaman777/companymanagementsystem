@@ -10,7 +10,8 @@ class Employee < ApplicationRecord
   belongs_to :manager, class_name: "Employee", optional: true
   
 
+  has_many :leafs
   belongs_to :company
-  belongs_to :department , foreign_key: :department_code
+  belongs_to :department, foreign_key: :department_code
   validates_presence_of :department
 end

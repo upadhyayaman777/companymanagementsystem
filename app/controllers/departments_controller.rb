@@ -12,6 +12,7 @@ class DepartmentsController < ApplicationController
 
     @company = Company.find_by(params[:company_id])
     @departments = @company.departments
+    # @department.employee = current_employee
 
     # @department = Department.find_by(params[:department_code])
 
